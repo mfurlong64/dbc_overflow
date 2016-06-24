@@ -26,3 +26,48 @@ li a:hover {
 #home {
     float: left;
 }
+
+form {
+    margin-top: 50px;
+    margin: 0 auto; 
+    width:300px;
+    background-color: #fddcd2;
+    font-size: 17px;
+}
+
+body {
+    background-color: #fddcd2;
+}
+
+
+
+input {
+  margin-top: 30px;
+  background-color: #fddcd2;
+  outline: none;
+  border: none;
+  text-align: left;
+  font-size: 17px;
+}
+
+
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#fffaf9; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    
+}
+
+
+
+
+
+.boxes:focus {
+  outline: none;
+  box-shadow: 0 1px 0 0;
+}
+
