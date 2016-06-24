@@ -1,0 +1,15 @@
+<div class="center">
+  <p><a href="#"> + </a> Votes: <%= @question.votes.count %></p>
+  <h3><%= @question.title %></h3>
+  <%= @question.body %>
+  <div class="answers">
+    <h4>Answers:</h4>
+    <% @answers.each do |answer| %>
+      <div class="comment">
+        <p><a href="#"> + </a> Votes: <%= answer.votes.count %></p>
+        <%=answer.body  %>
+      </div>
+    <%end %>
+
+  </div>
+</div>
