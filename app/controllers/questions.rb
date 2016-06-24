@@ -13,9 +13,24 @@ get '/questions/:id' do
   erb :'/questions/show'
 end
 
-get '/questions/:id/vote' do
-  @question = Question.find(params[:id])
-  @question.votes.create(user_id: session[:user_id], value: 1)
+post '/questions/:id/vote' do
 
-  redirect "/questions/#{@question.id}"
+  @question = Question.find(params[:id])
+
+  if @question.id.user_id == session[:user_id]
+    redirect "/questions/#{@question.id}"
+  else
+
+  new_vote = Votes.new(user_id: session[:user_id], value: 1, voteable_id: @question.id)
+  new_vote.save
+
+ if request.xhr?
+    content_type :json
+    { questionId: @question.id,
+      voteId: new_vote
+      }.to_json
+  else
+    redirect "/questions/#{@question.id}"
+  end
+end
 end
