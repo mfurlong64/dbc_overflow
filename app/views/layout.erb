@@ -11,20 +11,29 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   <title>P Overflow</title>
 </head>
 <body>
+
   <ul>
     <li id="home"><a href="default.asp">Home</a></li>
-    <li><a href="/users/login">Login</a></li>
-    <li><a href="/users/new">Register</a></li>
-    <li><a href=<%= "/users/" %>>Profile</a></li>
-    <li><a href="/users/logout">Logout</a></li>
+    <% if session[:user_id] %>
+      <li><a href="/users/">Profile</a></li>
+      <li><a href="/users/logout">Logout</a></li>
+    <% else %>
+      <li><a href="/users/login">Login</a></li>
+      <li><a href="/users/new">Register</a></li>
+    <% end %>
+
+
   </ul>
   <%= yield %>
+
 </body>
 </html>

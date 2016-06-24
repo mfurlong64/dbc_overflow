@@ -9,7 +9,7 @@ end
 
 post '/users' do
   @user = User.create(name: params[:name], email: params[:email],password: params[:password])
-  session[:id] = @user.id
+  session[:user_id] = @user.id
 
   redirect "/users/#{@user.id}"
 end
@@ -19,30 +19,19 @@ get '/users/login' do
 end
 
 post '/users/login' do
-  #    @user = User.authenticate(params[:email], params[:password])
-  #    p @user
-  #    p "3"*24
-  # if @user
-  #   session[:id] = @user.id
-  #   redirect "users/#{@user.id}"
-  # else
-  #   erb :'index'
-  # end
-  @user = User.find_by_email(params[:email])
+  @user = User.authenticate(params[:email], params[:password])
   p @user
-  p "3"*24
-  if @user.password == params[:password]
-    p "insttid pafee"
-    session[:id] = @user.id
+  if @user
+    session[:user_id] = @user.id
+    p @user.id
     redirect "users/#{@user.id}"
   else
-    p "outisd the paeer"
-    erb :'index'
+    erb :login
   end
 end
 
 get '/users/logout' do
-  session[:id] = nil
+  session[:user_id] = nil
   redirect '/'
 end
 
