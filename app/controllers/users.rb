@@ -19,25 +19,12 @@ get '/users/login' do
 end
 
 post '/users/login' do
-  #    @user = User.authenticate(params[:email], params[:password])
-  #    p @user
-  #    p "3"*24
-  # if @user
-  #   session[:id] = @user.id
-  #   redirect "users/#{@user.id}"
-  # else
-  #   erb :'index'
-  # end
-  @user = User.find_by_email(params[:email])
-  p @user
-  p "3"*24
-  if @user.password == params[:password]
-    p "insttid pafee"
-    session[:id] = @user.id
+  @user = User.authenticate(params[:email], params[:password_hash])
+  if @user
+    session[:user_id] = @user.id
     redirect "users/#{@user.id}"
   else
-    p "outisd the paeer"
-    erb :'index'
+    erb :login
   end
 end
 
