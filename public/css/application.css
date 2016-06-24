@@ -30,15 +30,11 @@ li a:hover {
 form {
     margin-top: 50px;
     margin: 0 auto; 
-    width:300px;
+    width: 400px;
+    height: 300px;
     background-color: #fddcd2;
     font-size: 17px;
 }
-
-body {
-    background-color: #fddcd2;
-}
-
 
 
 input {
@@ -59,11 +55,20 @@ input[type=submit] {
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
+    display: block;
+    margin-top: 20px;
     
 }
 
+.boxes {
+    margin-top: 20px;
+}
 
 .boxes:focus {
   outline: none;
   box-shadow: 0 1px 0 0;
+}
+
+body {
+    background-color: #fddcd2;
 }
