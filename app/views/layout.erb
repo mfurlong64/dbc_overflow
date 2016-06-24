@@ -23,10 +23,15 @@
 <div class="container">
   <ul>
     <li id="home"><a href="default.asp">Home</a></li>
-    <li><a href="/users/login">Login</a></li>
-    <li><a href="/users/new">Register</a></li>
-    <li><a href="/users/">Profile</a></li>
-    <li><a href="/users/logout">Logout</a></li>
+    <% if session[:user_id] %>
+      <li><a href="/users/">Profile</a></li>
+      <li><a href="/users/logout">Logout</a></li>
+    <% else %>
+      <li><a href="/users/login">Login</a></li>
+      <li><a href="/users/new">Register</a></li>
+    <% end %>
+    
+    
   </ul>
   <%= yield %>
   </div>
