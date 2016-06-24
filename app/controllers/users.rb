@@ -4,22 +4,39 @@ get '/users' do
 end
 
 get '/users/new' do
-  @user = User.create(name: params[:name], email: params[:email])
-  erb :'/users/register'
+  erb :'/users/new'
 end
 
 post '/users' do
-  @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+  @user = User.create(name: params[:name], email: params[:email],password: params[:password])
   session[:id] = @user.id
+
   redirect "/users/#{@user.id}"
 end
 
 get '/users/login' do
-   @user = User.authenticate(params[:email], params[:password])
-  if @user
+  erb :login
+end
+
+post '/users/login' do
+  #    @user = User.authenticate(params[:email], params[:password])
+  #    p @user
+  #    p "3"*24
+  # if @user
+  #   session[:id] = @user.id
+  #   redirect "users/#{@user.id}"
+  # else
+  #   erb :'index'
+  # end
+  @user = User.find_by_email(params[:email])
+  p @user
+  p "3"*24
+  if @user.password == params[:password]
+    p "insttid pafee"
     session[:id] = @user.id
-    redirect '/users/#{@user.id}'
+    redirect "users/#{@user.id}"
   else
+    p "outisd the paeer"
     erb :'index'
   end
 end
