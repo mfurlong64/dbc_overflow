@@ -3,34 +3,35 @@ get '/users' do
   erb :'index'
 end
 
-get '/users/register' do
-  @user = User.new
+get '/users/new' do
+  @user = User.create(name: params[:name], email: params[:email])
   erb :'/users/register'
 end
 
 post '/users' do
-  @user = User.new(params[:info])
-  @user.save
-  redirect '/users'
+  @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+  session[:id] = @user.id
+  redirect "/users/#{@user.id}"
 end
 
 get '/users/login' do
-  erb :'users/login'
+   @user = User.authenticate(params[:email], params[:password])
+  if @user
+    session[:id] = @user.id
+    redirect '/users/#{@user.id}'
+  else
+    erb :'index'
+  end
 end
 
 get '/users/logout' do
-  session[:user_id] = nil
+  session[:id] = nil
   redirect '/'
 end
 
 get '/users/:id' do
-  @user = User.authenticate(params[:email], params[:password])
-  if @user
-    session[:user_id] = @user.id
-    redirect '/users/#{user.id}'
-  else
-    erb :'login'
-  end
+  @user = User.find(params[:id])
+  erb :"users/show"
 end
 
 
