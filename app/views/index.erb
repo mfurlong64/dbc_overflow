@@ -1,1 +1,17 @@
-this is index
+<div class="row">
+<% @question.each do |questions| %>
+<div class="col-md-2">
+  <p><a href="#">+</a>  Votes: <%= questions.votes.count %>
+</div>
+<div class="col-md-2">
+   <p>Answers: <%= questions.answers.count %></p>
+</div>
+<div class="col-md-6">
+  <a href="#"><p><%= questions.title %></p></a>
+</div>
+<div class="col-md-2">
+  <p>Created at: <%= questions.created_at %></p>
+</div>
+
+<% end %>
+</div>
