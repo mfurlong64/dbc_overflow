@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   include BCrypt
 
-   def password
+ def password
     @password ||= Password.new(password_hash)
   end
 
@@ -18,9 +18,19 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
+  def create
+    @user = User.new(params[:user])
+    @user.password = params[:password]
+    @user.save!
+  end
 
   def self.authenticate(email, password)
     @user = User.find_by(email: email)
+     p "9"*24
+    p @user
+    p @user.password == password
+    p password
+     p "9"*24
     if @user && @user.password == password
       @user
     else
