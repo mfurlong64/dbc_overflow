@@ -9,7 +9,7 @@ end
 
 post '/users' do
   @user = User.create(name: params[:name], email: params[:email],password: params[:password])
-  session[:id] = @user.id
+  session[:user_id] = @user.id
 
   redirect "/users/#{@user.id}"
 end
@@ -19,9 +19,11 @@ get '/users/login' do
 end
 
 post '/users/login' do
-  @user = User.authenticate(params[:email], params[:password_hash])
+  @user = User.authenticate(params[:email], params[:password])
+  p @user
   if @user
     session[:user_id] = @user.id
+    p @user.id
     redirect "users/#{@user.id}"
   else
     erb :login
@@ -29,7 +31,7 @@ post '/users/login' do
 end
 
 get '/users/logout' do
-  session[:id] = nil
+  session[:user_id] = nil
   redirect '/'
 end
 
