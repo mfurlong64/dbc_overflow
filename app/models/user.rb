@@ -26,12 +26,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(email, password)
     @user = User.find_by(email: email)
-     p "9"*24
-    p @user
-    p @user.password == password
-    p password
-     p "9"*24
-    if @user && @user.password == password
+    if @user.password == password
       @user
     else
       nil
