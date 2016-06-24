@@ -12,7 +12,7 @@ post '/users' do
   @user = User.create(name: params[:name], email: params[:email],password: params[:password])
   session[:user_id] = @user.id
 
-  redirect "/users/#{@user.id}"
+  redirect "/"
 end
 
 get '/users/login' do
@@ -25,7 +25,7 @@ post '/users/login' do
   if @user
     session[:user_id] = @user.id
     p @user.id
-    redirect "users/#{@user.id}"
+    redirect "/"
   else
     erb :login
   end
