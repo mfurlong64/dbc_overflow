@@ -21,7 +21,7 @@
 </head>
 <body>
   <ul>
-    <li id="home"><a href="/">Home</a></li>
+    <li id="home"><a href="/">&lt;P Overflow&gt;</a></li>
     <% if session[:user_id] %>
       <li><a href="/users/">Profile</a></li>
       <li><a href="/users/logout">Logout</a></li>
@@ -29,8 +29,6 @@
       <li><a href="/users/login">Login</a></li>
       <li><a href="/users/new">Register</a></li>
     <% end %>
-
-
   </ul>
   <%= yield %>
 </body>

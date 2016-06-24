@@ -40,24 +40,3 @@ get '/users/:id' do
   @user = User.find(params[:id])
   erb :"users/show"
 end
-
-get '/questions/new' do
-  p "PPPPPPPPPPPPPPPPPPfsdPgPdxfPPhdfn"
-  erb :'/Questions/question'
-end
-
-post '/questions/new' do
-   @question = Question.create(title: params[:title], body: params[:body], user_id: session[:user_id])
-   redirect '/'
-end
-
-
-# post '/horses' do 
-#   @horse = Horse.create(params['horse'])
-
-#   if request.xhr?
-#     erb :'horses/index'
-#   else
-#     redirect '/horses'
-#   end
-# end
