@@ -44,6 +44,7 @@ input {
   border: none;
   text-align: left;
   font-size: 17px;
+  display: block;
 }
 
 
@@ -71,6 +72,10 @@ input[type=submit] {
 
 body {
     background-color: #fddcd2;
+}
+
+.container {
+  background-color: #fddcd2
 }
 
 .center {
