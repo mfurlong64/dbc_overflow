@@ -13,13 +13,11 @@
 		<div class="col-md-2">
 		  <p>Created at: <%= questions.created_at %></p>
 		</div>
-
 	<% end %>
 	<% if session[:user_id] %>
-	<form method="get" action="/questions/new">
-	    <button type="submit">Ask a Question</button>
-	</form>
+		<form method="get" action="/questions/new">
+		    <button type="submit">Ask a Question</button>
+		</form>
 	<%end %>
-
 	</div>
 </div>
