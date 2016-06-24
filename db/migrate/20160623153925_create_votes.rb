@@ -2,7 +2,7 @@ class CreateVotes < ActiveRecord::Migration
   def change
 
     create_table :votes do |t|
-      t.interger :value, presence: true
+      t.integer :value, presence: true
       t.integer :votable_id
       t.string :votable_type
 
