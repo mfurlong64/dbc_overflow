@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
-  # Remember to create a migration!
-   validates :email, uniqueness: true
+
+  has_many :questions
+  has_many :answers
+  has_many :votes
+
+  validates :email, uniqueness: true
+
 end
