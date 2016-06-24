@@ -29,7 +29,7 @@ li a:hover {
 
 form {
     margin-top: 50px;
-    margin: 0 auto; 
+    margin: 0 auto;
     width: 400px;
     height: 300px;
     background-color: #fddcd2;
@@ -50,15 +50,15 @@ input {
 
 
 input[type=submit] {
-    padding:5px 15px; 
-    background:#fffaf9; 
+    padding:5px 15px;
+    background:#fffaf9;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
-    border-radius: 5px; 
+    border-radius: 5px;
     display: block;
     margin-top: 20px;
-    
+
 }
 
 .boxes {
@@ -76,4 +76,18 @@ body {
 
 .container {
   background-color: #fddcd2
+}
+
+.center {
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: left;
+}
+
+div .answers {
+    padding: 20px;
+}
+
+.comment {
+    margin: 20px;
 }

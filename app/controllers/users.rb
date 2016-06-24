@@ -42,6 +42,7 @@ get '/users/:id' do
 end
 
 get '/questions/new' do
+  p "PPPPPPPPPPPPPPPPPPfsdPgPdxfPPhdfn"
   erb :'/Questions/question'
 end
 

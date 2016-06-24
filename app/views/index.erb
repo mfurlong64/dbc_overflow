@@ -1,27 +1,25 @@
-
 <div class="container">
 	<div class="row">
-
 	<% @question.each do |questions| %>
 		<div class="col-md-2">
-	  		<p><a href="#">+</a>  Votes: <%= questions.votes.count %>
+  			<p><a href="#">+</a>  Votes: <%= questions.votes.count %>
 		</div>
 		<div class="col-md-2">
-	   		<p>Answers: <%= questions.answers.count %></p>
+   			<p>Answers: <%= questions.answers.count %></p>
 		</div>
 		<div class="col-md-6">
-	  		<a href="#"><p><%= questions.title %></p></a>
+		  <a href="/questions/<%= questions.id %>"><p><%= questions.title %></p></a>
 		</div>
 		<div class="col-md-2">
-	  		<p>Created at: <%= questions.created_at %></p>
+		  <p>Created at: <%= questions.created_at %></p>
 		</div>
 
 	<% end %>
-	<!-- <#% if session[:id] %> -->
+	<% if session[:user_id] %>
 	<form method="get" action="/questions/new">
 	    <button type="submit">Ask a Question</button>
 	</form>
-	<!-- <#%end %> -->
+	<%end %>
 
 	</div>
 </div>
