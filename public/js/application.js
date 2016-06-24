@@ -5,7 +5,13 @@ $(document).ready(function() {
     var link = $(this).children().attr('href')
     console.log(link)
     $.ajax({
-      url :
+      url: link,
+      post: "POST"
+    }).done(function(data){
+      var id = data['questionId']
+      var vote = data['voteId']
+      console.log(id)
+      console.log(link)
     })
   })
 });
