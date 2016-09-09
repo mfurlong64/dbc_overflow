@@ -7,7 +7,7 @@
     <% @answers.each do |answer| %>
       <div class="comment">
         <p><a href="#"> + </a> Votes: <%= answer.votes.count %></p>
-        <%=answer.body  %>
+        <%= answer.body  %>
       </div>
     <%end %>
 
